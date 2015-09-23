@@ -3,6 +3,11 @@
  * Role   : Defines entities and related types.
  */
 
+package TRPG;
+
+/**
+ * Companion for the Entity class that generates ID.
+ */
 object Entity {
   private var generatedEntities : Int = 0;
 

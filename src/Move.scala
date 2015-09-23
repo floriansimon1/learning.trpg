@@ -3,6 +3,8 @@
 *  Role   : Case class that represents a single move.
 */
 
+package TRPG;
+
 /**
  * Case class that represents a single move.
  *

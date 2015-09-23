@@ -3,6 +3,8 @@
  * Role   : Case class that represents a game of TRPG.
  */
 
+package TRPG;
+
 import scala.util.Random;
 
 /**

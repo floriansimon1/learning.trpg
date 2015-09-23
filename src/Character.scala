@@ -3,10 +3,11 @@
 *  Role   : Case class that represents a character.
 */
 
+package TRPG;
+
 /**
  * Case class that represents a character.
  *
- * @param entityID     The entity ID.
  * @param name         The name of the player.
  * @param health       The character's HP.
  * @param speed        How quickly the character regain action points.
@@ -18,7 +19,6 @@ case class Character(
   health       : Stat,
   speed        : Stat,
   range        : Stat,
-  entityID     : Int,
   actionPoints : Int
 ) extends Entity {
   /**
@@ -27,6 +27,6 @@ case class Character(
    * @return True if the character is dead, false otherwise.
    */
   def isDead() : Boolean = {
-    return health.currentValue == 0;
+    return this.health.currentValue == 0;
   };
 }

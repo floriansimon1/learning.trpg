@@ -3,6 +3,8 @@
  * Role   : Case class that represents a team of players.
  */
 
+package TRPG;
+
 /**
  * The team case class
  *
@@ -15,6 +17,6 @@ case class Team(characters : List[Character]) {
    * @return True if the team is defeated, false otherwise.
    */
   def defeated() : Boolean = {
-    return this.characters.exists(_.isDead);
+    return this.characters.forall(_.isDead);
   };
 }

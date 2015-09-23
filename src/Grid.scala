@@ -3,6 +3,8 @@
  * Role   : Case class that holds data about the game's map.
  */
 
+package TRPG;
+
 /**
  * Case class that holds the game's map.
  *

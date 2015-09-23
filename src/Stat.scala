@@ -1,4 +1,8 @@
 /**
- * Created by florian on 22/09/15.
+ * Author : Florian Simon <florian@tentwentyfour.lu>
+ * Role   : Represents a character's characteristic.
  */
+
+package TRPG;
+
 case class Stat(currentValue : Int, maxValue : Int);
