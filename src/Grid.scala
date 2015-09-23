@@ -24,4 +24,34 @@ case class Grid(width : Int, height : Int, objects : Map[Int, Point]) {
   def move(entity : Int, newPosition : Point) : Grid = {
     return this.copy(objects = objects + (entity → newPosition));
   }
+
+  /**
+   * Returns whether or not the given position is free.
+   *
+   * @return True if the given position is free, false otherwise.
+   */
+  def positionFree(position : Point) : Boolean = {
+    return this.objects.forall(_._2 == position);
+  }
+
+  /**
+   * Returns the move options for a given character.
+   *
+   * @param character The character to determine move options for.
+   *
+   * @return A list of points the character can go to.
+   */
+  def getMoveOptions(character : Character) : List[Point] = {
+    return (for (
+      x        ← 0 to character.range.currentValue;
+      y        ← 0 to character.range.currentValue;
+      position ← new Point(x, y)
+    )
+      yield x + y match {
+        case 0                                                                             ⇒ Nil;
+        case range if range <= character.range.currentValue && this.positionFree(position) ⇒ position;
+        case _                                                                             ⇒ Nil;
+      }
+    ).toList;
+  }
 }
