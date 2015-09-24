@@ -31,7 +31,7 @@ case class Grid(width : Int, height : Int, objects : Map[Int, Point]) {
    * @return True if the given position is free, false otherwise.
    */
   def positionFree(position : Point) : Boolean = {
-    return this.objects.forall(_._2 == position);
+    return this.objects.forall({ case (_, pos) ⇒ pos == position });
   }
 
   /**
