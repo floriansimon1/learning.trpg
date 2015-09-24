@@ -31,7 +31,7 @@ case class Grid(width : Int, height : Int, objects : Map[Int, Point]) {
    * @return True if the given position is free, false otherwise.
    */
   def positionFree(position : Point) : Boolean = {
-    return this.objects.forall({ case (_, pos) ⇒ pos == position });
+    return this.objects.forall({ case (_, pos) ⇒ pos != position });
   }
 
   /**
@@ -41,17 +41,19 @@ case class Grid(width : Int, height : Int, objects : Map[Int, Point]) {
    *
    * @return A list of points the character can go to.
    */
-  def getMoveOptions(character : Character) : List[Point] = {
-    return (for (
-      x        ← 0 to character.range.currentValue;
-      y        ← 0 to character.range.currentValue;
-      position ← new Point(x, y)
-    )
-      yield x + y match {
-        case 0                                                                             ⇒ Nil;
-        case range if range <= character.range.currentValue && this.positionFree(position) ⇒ position;
-        case _                                                                             ⇒ Nil;
-      }
-    ).toList;
+  def getMoveOptions(character : Character) : Option[Set[Point]] = {
+    return (
+      for (current ← this.objects.get(character.ID)) yield (for (
+        x        ← current.x - character.range.currentValue to current.x + character.range.currentValue;
+        y        ← current.y - character.range.currentValue to current.y + character.range.currentValue;
+        dx       = Math.max(x, current.x) - Math.min(x, current.x);
+        dy       = Math.max(y, current.y) - Math.min(y, current.y);
+        position = Point(x, y);
+
+        if (dx + dy < character.range.currentValue);
+        if (this.positionFree(position));
+        if (current != Point(x, y))
+      ) yield Point(x, y)).toSet
+    );
   }
 }
