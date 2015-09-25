@@ -44,13 +44,14 @@ case class Grid(width : Int, height : Int, objects : Map[Int, Point]) {
   def getMoveOptions(character : Character) : Option[Set[Point]] = {
     return (
       for (current ← this.objects.get(character.ID)) yield (for (
-        x        ← current.x - character.range.currentValue to current.x + character.range.currentValue;
         y        ← current.y - character.range.currentValue to current.y + character.range.currentValue;
+        x        ← current.x - character.range.currentValue to current.x + character.range.currentValue;
         dx       = Math.max(x, current.x) - Math.min(x, current.x);
         dy       = Math.max(y, current.y) - Math.min(y, current.y);
         position = Point(x, y);
 
-        if (dx + dy < character.range.currentValue);
+        if (dx + dy <= character.range.currentValue);
+        if (x >= 0 && y >= 0 && x < this.width && y < this.height);
         if (this.positionFree(position));
         if (current != Point(x, y))
       ) yield Point(x, y)).toSet
