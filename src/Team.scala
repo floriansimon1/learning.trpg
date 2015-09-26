@@ -8,15 +8,21 @@ package TRPG;
 /**
  * The team case class
  *
- * @param characters The character that compose the team.
+ * @param characters IDs of the characters that compose the team.
  */
-case class Team(characters : List[Character]) {
+case class Team(characters : List[Int]) {
+  private def getCharacters(g : Game) : List[Character] = {
+    return for (c ← this.characters if g.characters.get(c) != None) yield g.characters.get(c).get;
+  }
+
   /**
    * Returns whether or not the team is defeated.
    *
+   * @param g The game instance to fetch characters from.
+   *
    * @return True if the team is defeated, false otherwise.
    */
-  def defeated() : Boolean = {
-    return this.characters.forall(_.isDead);
+  def defeated(g : Game) : Boolean = {
+    return this.getCharacters(g).forall(_.isDead);
   };
 }

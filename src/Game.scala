@@ -19,7 +19,8 @@ case class Game(
   grid       : Grid,
   randomizer : Random,
   teams      : List[Team],
-  moves      : List[Move]
+  moves      : List[Move],
+  characters : Map[Int, Character]
 ) {
   /**
    * Returns whether or not the game is over.
@@ -27,7 +28,7 @@ case class Game(
    * @return True if the game is over, false otherwise.
    */
   def over() : Boolean = {
-    return teams.exists(_.defeated);
+    return teams.exists(_.defeated(this));
   }
 
   /**
@@ -38,5 +39,24 @@ case class Game(
    *
    * @return The new instance.
    */
-  def applyMove(move : Move) : Game = ???
+  def applyMove(move : Move) : Game = {
+    /* Moves the character. */
+    val newGrid = move.newPosition match {
+      case Some(p) ⇒ this.grid.move(move.character.ID, p);
+      case _       ⇒ this.grid
+    };
+
+    /* Applies the attack to its target. */
+    val characters = move.attack match {
+      case Some(a) ⇒ this.characters + (a.target → this.characters.get(a.target).get.sustain(a.attack));
+      case _       ⇒ this.characters
+    };
+
+    /* Returns the updated game state, adding the move to the moves list. */
+    return this.copy(
+      grid       = newGrid,
+      characters = characters,
+      moves      = move :: this.moves
+    );
+  }
 }

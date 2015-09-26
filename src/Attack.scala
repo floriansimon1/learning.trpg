@@ -5,8 +5,9 @@
 
 package TRPG;
 
-case class Attack(
-  strength : Stat,
-  actor    : Character,
-  victim   : Option[Character]
-);
+/**
+ * Represents a single attack.
+ *
+ * @param health The impact on the HPs and max HPs.
+ */
+case class Attack(health : Stat);

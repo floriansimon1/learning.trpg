@@ -29,4 +29,17 @@ case class Character(
   def isDead() : Boolean = {
     return this.health.currentValue == 0;
   };
+
+  /**
+   * Applies an attack on a character.
+   *
+   * @param attack The attack to apply.
+   *
+   * @return A character on which the attack has been applied.
+   */
+  def sustain(attack : Attack) : Character = {
+    return this.copy(
+      health = this.health - attack.health
+    );
+  }
 }

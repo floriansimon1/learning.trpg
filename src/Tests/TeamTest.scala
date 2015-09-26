@@ -6,10 +6,10 @@
 package TRPG.Tests;
 
 import org.scalatest.FlatSpec;
+import scala.util.Random;
 
-import TRPG.Character;
-import TRPG.Stat;
-import TRPG.Team;
+import TRPG._
+;
 
 /**
  * Team class test.
@@ -17,15 +17,14 @@ import TRPG.Team;
 class TeamTest extends FlatSpec {
 
   it should "report a team with dead characters as defeated" in {
-    val t = new Team(List(new Character(
-      name         = "",
-      health       = new Stat(0, 3),
-      speed        = new Stat(3, 3),
-      range        = new Stat(3, 3),
-      actionPoints = 0
-    )));
-
-    assert(t.defeated());
+    val gr = Grid(width = 5, height = 5, Map());
+    val r = Random;
+    val m = Nil;
+    val c = Character("", Stat(3, 3), Stat(3, 3), range = Stat(3, 3), 4);
+    val cs = Map(c.ID → Point(1, 2));
+    val t = Team(List(c.ID));
+    val g = Game(gr, r, List(t), m, Map());
+    assert(t.defeated(g));
   }
 
 }

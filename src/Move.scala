@@ -13,7 +13,8 @@ package TRPG;
  * @param randomNumber The generated random number.
  */
 case class Move(
+  character    : Character,
   newPosition  : Option[Point],
-  attack       : Option[Attack],
+  attack       : Option[CarriedAttack],
   randomNumber : Int
 );
