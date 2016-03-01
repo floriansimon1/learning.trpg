@@ -3,7 +3,7 @@
 *  Role   : Case class that represents a character.
 */
 
-package TRPG;
+package Game
 
 /**
  * Case class that represents a character.
@@ -13,13 +13,15 @@ package TRPG;
  * @param speed        How quickly the character regain action points.
  * @param range        The number of tiles you can walk in one move.
  * @param actionPoints The more points a character has, the quicker he can play.
+ * @param team         The team the character belongs to.
  */
 case class Character(
   name         : String,
   health       : Stat,
   speed        : Stat,
   range        : Stat,
-  actionPoints : Int
+  actionPoints : Int,
+  team         : Int
 ) extends Entity {
   /**
    * Returns whether or not the character is dead.

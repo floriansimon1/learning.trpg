@@ -3,20 +3,17 @@
  * Role   : Tests for the Grid class.
  */
 
-package Tests;
+package Tests.Unit
 
-import TRPG.Stat;
-import TRPG.Grid;
-import TRPG.Point;
-import TRPG.Character;
+import Game.{Character, Grid, Point, Stat}
 import org.scalatest.FlatSpec;
 
 /**
  * Tests for the grid class.
  */
 class GridTest extends FlatSpec {
-  val c  = Character("", Stat(3, 3), Stat(3, 3), range = Stat(3, 3), 4);
-  val c2 = Character("", Stat(3, 3), Stat(3, 3), range = Stat(3, 3), 4);
+  val c  = Character("", Stat(3, 3), Stat(3, 3), range = Stat(3, 3), 4, 0);
+  val c2 = Character("", Stat(3, 3), Stat(3, 3), range = Stat(3, 3), 4, 0);
   val m  = Map((c.ID → Point(1, 2)), (c2.ID → Point(1, 3)));
   val g  = Grid(width = 5, height = 5, objects = m);
 
@@ -29,7 +26,7 @@ class GridTest extends FlatSpec {
       Point(4, 3)
     );
 
-    assert(g.getMoveOptions(c2).getOrElse(Set()) == expectedOptions);
+    assert(g.getMoveOptions(c2) == expectedOptions);
   }
 
   it should "move characters from one point to another" in {

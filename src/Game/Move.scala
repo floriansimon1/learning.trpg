@@ -3,7 +3,7 @@
 *  Role   : Case class that represents a single move.
 */
 
-package TRPG;
+package Game
 
 /**
  * Case class that represents a single move.
@@ -13,8 +13,8 @@ package TRPG;
  * @param randomNumber The generated random number.
  */
 case class Move(
-  character    : Character,
-  newPosition  : Option[Point],
-  attack       : Option[CarriedAttack],
-  randomNumber : Int
+  character        : Int,
+  newPosition      : Option[Point],
+  attack           : Option[CarriedAttack],
+  randomNumber     : Int
 );

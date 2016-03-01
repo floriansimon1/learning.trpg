@@ -3,7 +3,7 @@
  * Role   : Represents a character's characteristic.
  */
 
-package TRPG;
+package Game
 
 /**
  * Represents a character's characteristic.

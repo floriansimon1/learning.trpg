@@ -3,7 +3,7 @@
  * Role   : Represents a 2D point.
  */
 
-package TRPG;
+package Game
 
 /**
  * Represents a 2D point.

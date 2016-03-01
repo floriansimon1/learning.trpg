@@ -3,8 +3,7 @@
  * Role   : Represents an attack that has been carried..
  */
 
-package TRPG;
-
+package Game
 
 /**
  * Represents an attack that has been carried.

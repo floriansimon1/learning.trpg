@@ -3,7 +3,7 @@
  * Role   : Defines entities and related types.
  */
 
-package TRPG;
+package Game
 
 /**
  * Companion for the Entity class that generates ID.

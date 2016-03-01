@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-sdk-2.11.6" level="application" />
     <orderEntry type="library" name="org.scalatest:scalatest_2.11:2.2.5" level="project" />
+    <orderEntry type="library" name="org.scala-lang.modules:scala-swing_2.11:1.0.2" level="project" />
   </component>
 </module>

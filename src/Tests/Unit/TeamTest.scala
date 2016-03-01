@@ -3,13 +3,13 @@
  * Role   : Tests the team class.
  */
 
-package TRPG.Tests;
+package Tests.Unit;
 
+import Game._;
 import org.scalatest.FlatSpec;
-import scala.util.Random;
 
-import TRPG._
-;
+import scala.swing.Color;
+import scala.util.Random;
 
 /**
  * Team class test.
@@ -20,10 +20,10 @@ class TeamTest extends FlatSpec {
     val gr = Grid(width = 5, height = 5, Map());
     val r = Random;
     val m = Nil;
-    val c = Character("", Stat(3, 3), Stat(3, 3), range = Stat(3, 3), 4);
+    val c = Character("", Stat(3, 3), Stat(3, 3), range = Stat(3, 3), 4, 0);
     val cs = Map(c.ID → Point(1, 2));
-    val t = Team(List(c.ID));
-    val g = Game(gr, r, List(t), m, Map());
+    val t = Team(new Color(0, 0, 0)).withCharacters(List(c.ID));
+    val g = Game(gr, r, m, Map((t.ID, t)), Map());
     assert(t.defeated(g));
   }
 
